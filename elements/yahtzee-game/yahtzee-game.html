@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../die-6-sided/die-6-sided.html">
+ 
+<polymer-element name="yahtzee-game">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .keeper {
+        opacity: 0.3;
+      }
+    </style>
+
+    <div id="dice">
+      <die-6-sided on-tap="{{toggle}}"></die-6-sided>
+      <die-6-sided on-tap="{{toggle}}"></die-6-sided>
+      <die-6-sided on-tap="{{toggle}}"></die-6-sided>
+      <die-6-sided on-tap="{{toggle}}"></die-6-sided>
+      <die-6-sided on-tap="{{toggle}}"></die-6-sided>
+    </div>
+
+    <button on-click="{{roll}}">Roll {{rollNumber + 1}}</button>
+  </template>
+  <script>
+    Polymer('yahtzee-game', {
+      rollNumber: 0,
+      attached: function() {
+        document.addEventListener('keydown', function(e) {
+          if (e.keyCode == 32) {
+            this.roll();
+          }
+        }.bind(this));
+      },
+      roll: function() {
+        var notKeepers = this.$.dice.querySelectorAll(':not(.keeper)');
+
+        Array.prototype.forEach.call(notKeepers, function (die) {
+          die.roll();
+        });
+
+        this.rollNumber++;
+        if (this.rollNumber > 2) {
+          this.rollNumber = 0;
+          var keepers = this.$.dice.querySelectorAll('.keeper');
+
+          Array.prototype.forEach.call(keepers, function (die) {
+            die.classList.toggle('keeper');
+          });
+        }
+      },
+      toggle: function(e) {
+        e.target.classList.toggle('keeper');
+      }
+    });
+  </script>
+</polymer-element>
+ 

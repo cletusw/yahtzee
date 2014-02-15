@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="die-6-sided" attributes="value">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+      }
+
+      div {
+        height: 100%;
+        width: 100%;
+        background-position: center top;
+        background-size: 100% auto;
+      }
+
+      .die-1 {
+        background-image: url(assets/200px-Dice-1.svg.png);
+      }
+
+      .die-2 {
+        background-image: url(assets/200px-Dice-2.svg.png);
+      }
+
+      .die-3 {
+        background-image: url(assets/200px-Dice-3.svg.png);
+      }
+
+      .die-4 {
+        background-image: url(assets/200px-Dice-4.svg.png);
+      }
+
+      .die-5 {
+        background-image: url(assets/200px-Dice-5.svg.png);
+      }
+
+      .die-6 {
+        background-image: url(assets/200px-Dice-6.svg.png);
+      }
+    </style>
+    <div class="die-{{value}}"></div>
+  </template>
+  <script>
+    Polymer('die-6-sided', {
+      value: 6,
+      roll: function() {
+        this.value = Math.floor(Math.random() * 6 + 1);
+      }
+    });
+  </script>
+</polymer-element>

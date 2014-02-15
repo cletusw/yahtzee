@@ -1,0 +1,26 @@
+{
+  "name": "yahtzee",
+  "version": "0.0.1",
+  "authors": [
+    "Clayton Watts <cletusw@gmail.com>"
+  ],
+  "description": "Dice for Yahtzee made with Polymer.",
+  "main": "index.html",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "yahtzee",
+    "game"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.1.4"
+  }
+}
