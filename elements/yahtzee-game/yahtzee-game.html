@@ -27,11 +27,12 @@
     Polymer('yahtzee-game', {
       rollNumber: 0,
       attached: function() {
-        document.addEventListener('keyup', function(e) {
-          if (e.keyCode == 32) {
-            this.roll();
-          }
-        }.bind(this));
+        document.addEventListener('keyup', this.keyupHandler.bind(this));
+      },
+      keyupHandler: function(e) {
+        if (e.keyCode == 32) {
+          this.roll();
+        }
       },
       roll: function() {
         var notKeepers = this.$.dice.querySelectorAll(':not(.keeper)');
