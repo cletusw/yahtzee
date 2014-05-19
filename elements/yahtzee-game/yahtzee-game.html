@@ -27,7 +27,7 @@
     Polymer('yahtzee-game', {
       rollNumber: 0,
       attached: function() {
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keyup', function(e) {
           if (e.keyCode == 32) {
             this.roll();
           }
